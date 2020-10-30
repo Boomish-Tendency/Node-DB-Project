@@ -22,7 +22,8 @@ let recipes = [
         }
     }
 ]
-let id = 0
+
+let id = 1
 
 module.exports = {
     getRecipes: (req, res) => {
@@ -31,15 +32,29 @@ module.exports = {
     getRecipe: (req, res) => {
         const {id} = req.params
         const recipeFound = recipes.find(recipe => recipe.id === +id)
+
         res.status(200).send(recipeFound)
     },
     addRecipe: (req, res) => {
+        recipes.push({...req.body, id})
+        id++
         
+        res.status(200).send(recipes)
     },
     editRecipe: (req, res) => {
-        
+        const {id} = req.params
+        const recipeFound = recipes.find(recipe => recipe.id === +id)
+        const recipeIndex = recipes.findIndex(recipe => recipe.id === +id)
+
+        recipes[recipeIndex] = ({...recipeFound, ...req.body})
+
+        res.status(200).send(recipes)
     },
     deleteRecipe: (req, res) => {
-        
+        const {id} = req.params
+        const recipeIndex = recipes.findIndex(recipe => recipe.id === +id)
+
+        recipes.splice(recipeIndex, 1)
+        res.status(200).send(recipes)
     },
 }
