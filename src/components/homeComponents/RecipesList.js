@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import RecipeHeaderInfo from './RecipeHeaderInfo'
+import { Redirect } from 'react-router-dom'
 
 class RecipesList extends Component {
     constructor() {
@@ -16,8 +17,11 @@ class RecipesList extends Component {
         .catch(err => console.log(err))
     }
 
-    render() {
+    redirect = (id) => {
+        this.setState({ isRedirect: true, place: id})
+    }
 
+    render() {
         const recipeMapped = this.state.recipes.map((recipe, index) => <RecipeHeaderInfo key={index} info={recipe}/>)
 
         return (

@@ -7,7 +7,6 @@ class Home extends Component {
         return (
             <body>
                 <Header />
-                <h1>THIS IS THE HOME PAGE</h1>
                 <RecipesList />
             </body>
         )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import RecipeDetails from './createRecipeComponents/RecipeDetails'
 import Header from './Header'
 
 class CreateRecipe extends Component {
@@ -6,7 +7,7 @@ class CreateRecipe extends Component {
         return (
             <body>
                 <Header />
-                <h1>THIS IS THE CREATE PAGE</h1>
+                <RecipeDetails />
             </body>
         )
     }
