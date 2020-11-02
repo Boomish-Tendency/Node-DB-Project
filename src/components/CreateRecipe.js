@@ -5,10 +5,10 @@ import Header from './Header'
 class CreateRecipe extends Component {
     render() {
         return (
-            <body>
+            <div>
                 <Header />
                 <RecipeDetails />
-            </body>
+            </div>
         )
     }
 }

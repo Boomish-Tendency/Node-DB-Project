@@ -7,7 +7,7 @@ const NewRecipeHeaderInfo = ({handleChange}) => {
             <input name="prepTime" onChange={e => handleChange(e)} placeholder="Prep Time"/>
             <input name="cookTime" onChange={e => handleChange(e)} placeholder="Cook Time"/>
             <input name="totalTime" onChange={e => handleChange(e)} placeholder="Total Time"/>
-            <input name="yeilds" onChange={e => handleChange(e)} placeholder="Yields"/>
+            <input name="yields" onChange={e => handleChange(e)} placeholder="Yields"/>
         </form>
     )
 }
