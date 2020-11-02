@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+:root {
+    --position-of-nav: 0;
+}
+
+body {
+    background-color: #EDEAE5;
+    font-family: 'Nunito', sans-serif;
+}
+
+header {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.logo {
+    font-size: 50px;
+    margin: 5px 0 0 30px;
+    color: #006670;
+}
+
+.page-link-container {
+    margin: 0 auto;
+    background: linear-gradient(120deg, transparent 40px, #9FECD6 0, #9FECD6 92%, transparent 40px);
+    width: 500px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.page-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px 10px;
+    z-index: 10;
+}
+
+.active {
+    color: #006670;
+}
+
+.active-slider {
+    width: 275px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(120deg, transparent 40px, #FBE180 0, #FBE180 92%, transparent 40px);
+}
+
+
+.recipe-list-container {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.recipe-list-item {
+    background-color: #006670;
+    padding: 15px;
+}
+
+
+.x-delete-recipe {
+    color: white;
+    background-color: transparent;
+    border: 0;
+}
+.x-delete-recipe:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.link-to-recipe-page {
+    text-decoration: none;
+    color: #FFF9C7;
+}
+
+
+.recipe-header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-name-header {
+    margin: 0;
+}
+
+.recipe-info-items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-info-items {
+    margin: 5px 20px 5px 0;
+}
+.items-container {
+    display: flex;
+}   
+
+/* Create Page */
+
+.create-recipe-container {
+    width: 750px;
+    background-color: #006670;
+    min-height: 650px;
+}
+
+
+.title-container {
+    color: #FFF9C7;
+    display: flex;
+    margin-left: 15px;
+}
+
+.create-recipe-details-inputs {
+    margin-left: 15px;
+}
+
+.header-details-inputs {
+    display: flex;
+}
+
+.header-input {
+    background-color: transparent;
+    border: none;
+    color: #FFF9C7;
+}
+
+.input-container {
+    display: flex;
+}
+
+.header-details-name {
+    margin: 0;
+    color: #FFF9C7;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.lists {
+    display: flex;
+}
+
+.create-recipe-container {
+    margin: 0 auto;
+}
+
+.create-recipe-container form {
+    padding: 25px;
+}
+
+.create-recipe-title {
+    color: #006670;
+    margin: 0 0 10px 380px;
+    width: 200px;
+}

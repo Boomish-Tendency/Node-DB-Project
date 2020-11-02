@@ -77,17 +77,24 @@ class RecipeDetails extends Component {
         const directionsMapped = this.state.directions.map((direction, index) => <NewList key={`${direction}: ${index}`} direction={direction}/>)
 
         return (
-            <form onSubmit={e => this.addRecipe(e, this.state)}>
-                <NewRecipeHeaderInfo handleChange={this.handleChange}/>
-                <NewItems handleChange={this.handleChange} addHeader={this.addHeader} addItem={this.addItem}/>
-                <ul>
-                    {ingredientsMapped}
-                </ul>
-                <ol>
-                    {directionsMapped}
-                </ol>
-                <button type="submit">Add Recipe</button>
-            </form>
+        <div className="recipe-details-container">
+            <h4 className="create-recipe-title">create recipe</h4>
+            <div className="create-recipe-container">
+                <form onSubmit={e => this.addRecipe(e, this.state)}>
+                    <NewRecipeHeaderInfo handleChange={this.handleChange}/>
+                    <NewItems handleChange={this.handleChange} addHeader={this.addHeader} addItem={this.addItem}/>
+                    <div className="lists">
+                        <ul>
+                            {ingredientsMapped}
+                        </ul>
+                        <ol>
+                            {directionsMapped}
+                        </ol>
+                    </div>
+                    <button className="add-recipe" type="submit">Add Recipe</button>
+                </form>
+            </div>
+        </div>
         )
     }
 }

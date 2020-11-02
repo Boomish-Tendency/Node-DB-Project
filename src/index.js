@@ -5,6 +5,7 @@ import Home from './components/Home'
 import CreateRecipe from './components/CreateRecipe'
 import RecipePage from './components/RecipePage'
 import './index.css';
+import './App.css'
 import Header from './components/Header';
 
 ReactDOM.render(

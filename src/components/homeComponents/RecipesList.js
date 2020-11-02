@@ -27,8 +27,8 @@ class RecipesList extends Component {
         const recipeMapped = this.state.recipes.map((recipe, index) => {
             return (
                 <div className="recipe-list-item">
-                    <span onClick={() => this.deleteRecipe(index)}>X</span>
-                    <Link to={`/recipes/${index}`}>
+                    <button className="x-delete-recipe hide" onClick={() => this.deleteRecipe(index)}>X</button>
+                    <Link className="link-to-recipe-page" to={`/recipes/${index}`}>
                         <RecipeHeaderInfo key={index} info={recipe}/>
                     </Link>
                 </div>
@@ -38,7 +38,7 @@ class RecipesList extends Component {
         return (
             <div>
                 <h4>Recipes</h4>
-                {recipeMapped}
+                <div className="recipe-list">{recipeMapped}</div>
             </div>
         )
     }

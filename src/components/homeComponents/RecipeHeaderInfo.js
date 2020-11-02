@@ -1,5 +1,5 @@
 import React from 'react'
-import EditInputs from './EditInputs'
+// import EditInputs from './EditInputs'
 
 const RecipeHeaderInfo = (props) => {
 
@@ -31,12 +31,18 @@ const RecipeHeaderInfo = (props) => {
 
     // const inputsMapped = editInputArr.map((input, index) => <EditInputs key={`${input}:${index}:${input.name}`} name={input.name} placeholder={input.placeholder} value={input.value} editToggle={editToggle} changeHandler={changeHandler}/>)
     return (
-        <div>
-            {!editToggle ? <h1>{recipeName}</h1> : <input name="recipeName" placeholder={recipeName} onChange={e => changeHandler(e)} />}
-            <h4>Prep Time: {!editToggle ? prepTime : <input name="prepTime" placeholder={prepTime} onChange={e => changeHandler(e)} />}</h4>
-            <h4>Cook Time: {!editToggle ? cookTime : <input name="cookTime" placeholder={cookTime} onChange={e => changeHandler(e)} />}</h4>
-            <h4>Total Time: {!editToggle ? totalTime : <input name="totalTime" placeholder={totalTime} onChange={e => changeHandler(e)} />}</h4>
-            <h4>Yields: {!editToggle ? yields : <input name="yields" placeholder={yields} onChange={e => changeHandler(e)} />}</h4>
+        <div className="recipe-header-container">
+            {!editToggle ? <h1 className="recipe-name-header">{recipeName}</h1> : <input name="recipeName" placeholder={recipeName} onChange={e => changeHandler(e)} />}
+            <div className="recipe-info-items-container">
+                <div className="items-container">
+                    <h4 className="recipe-info-items">Prep Time: {!editToggle ? prepTime : <input name="prepTime" placeholder={prepTime} onChange={e => changeHandler(e)} />}</h4>
+                    <h4 className="recipe-info-items">Cook Time: {!editToggle ? cookTime : <input name="cookTime" placeholder={cookTime} onChange={e => changeHandler(e)} />}</h4>
+                </div>
+                <div className="items-container">
+                    <h4 className="recipe-info-items">Total Time: {!editToggle ? totalTime : <input name="totalTime" placeholder={totalTime} onChange={e => changeHandler(e)} />}</h4>
+                    <h4 className="recipe-info-items">Yields: {!editToggle ? yields : <input name="yields" placeholder={yields} onChange={e => changeHandler(e)} />}</h4>
+                </div>
+            </div>
         </div>
     )
 }

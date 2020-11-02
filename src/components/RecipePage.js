@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Recipe from './homeComponents/Recipe'
 import RecipeHeaderInfo from './homeComponents/RecipeHeaderInfo'
+import '../App.css'
 
 class RecipePage extends Component {
     constructor() {
