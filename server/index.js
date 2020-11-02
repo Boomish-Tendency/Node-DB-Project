@@ -9,7 +9,7 @@ app.use(express.json())
 app.get("/api/recipes", getRecipes)
 app.get("/api/recipes/:id", getRecipe)
 app.post("/api/recipes", addRecipe)
-app.put("/api/recipes/:index", editRecipe)
+app.put("/api/recipes/:id", editRecipe)
 app.delete("/api/recipes/:id", deleteRecipe)
 
 

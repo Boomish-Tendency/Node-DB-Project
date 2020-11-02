@@ -1,7 +1,7 @@
 import React from 'react'
 import AddItem from './AddItem'
 
-const NewIngredients = ({addItem, handleChange}) => {
+const NewItems = ({addItem, handleChange}) => {
     const addItems = [
         // {
         //     names: "ingredientsHeaders",
@@ -48,4 +48,4 @@ const NewIngredients = ({addItem, handleChange}) => {
     )
 }
 
-export default NewIngredients
+export default NewItems

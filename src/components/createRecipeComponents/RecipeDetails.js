@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import NewIngredients from './NewIngredients'
+import NewItems from './NewItems'
 import NewList from './NewList'
 import NewRecipeHeaderInfo from './NewRecipeHeaderInfo'
 
@@ -36,7 +36,6 @@ class RecipeDetails extends Component {
 
     addItem = (e, header) => {
         e.preventDefault()
-
         // if (header) {
         //     if (e.target.name === "ingredientsHeaders") {
         //         this.setState(prevState => ({ingredientsArrId: prevState.ingredientsArrId + 1}))
@@ -62,25 +61,25 @@ class RecipeDetails extends Component {
         //     }
 
         // }
-
         this.setState(prevState => ( {[e.target.name]: [...prevState[e.target.name], this.state[e.target.id]]} ))
     }
 
     addRecipe = (e, recipe) => {
         e.preventDefault()
-
         axios.post("/api/recipes", recipe)
     }
+
+
     render() {
 
 
-        const ingredientsMapped = this.state.ingredients.map(ingredient => <NewList key={ingredient} ingredient={ingredient}/>)
-        const directionsMapped = this.state.directions.map(direction => <NewList key={direction} direction={direction}/>)
+        const ingredientsMapped = this.state.ingredients.map((ingredient, index) => <NewList key={`${ingredient}: ${index}`} ingredient={ingredient}/>)
+        const directionsMapped = this.state.directions.map((direction, index) => <NewList key={`${direction}: ${index}`} direction={direction}/>)
 
         return (
             <form onSubmit={e => this.addRecipe(e, this.state)}>
                 <NewRecipeHeaderInfo handleChange={this.handleChange}/>
-                <NewIngredients handleChange={this.handleChange} addHeader={this.addHeader} addItem={this.addItem}/>
+                <NewItems handleChange={this.handleChange} addHeader={this.addHeader} addItem={this.addItem}/>
                 <ul>
                     {ingredientsMapped}
                 </ul>

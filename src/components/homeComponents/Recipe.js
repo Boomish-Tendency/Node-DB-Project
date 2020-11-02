@@ -11,7 +11,7 @@ class Recipe extends Component {
 
 
     render() {
-        const {editToggle, removeItem, changeHandler, addItem} = this.props
+        const {editToggle, removeItem, addItem, recipe, changeHandlerItems} = this.props
         // const listMapped = this.props.recipe.lists.map(list => {
         //     return list.map((section, index) => {
     
@@ -24,18 +24,28 @@ class Recipe extends Component {
         //     })
         // }) 
 
-        const ingredientsMapped = this.props.recipe.ingredients.map((ingredient, index) => {
-            return (
-                <div key={`div${ingredient}:${index}`}>
-                    <ListItem key={`${index}:${ingredient}`} item={ingredient}/>
-                    {editToggle ? <span key={`X${index}`} onClick={e => removeItem(e, index)}>X</span> : null} 
-                </div>
-            )
-        })
+        let ingredientsMapped = []
+        if (recipe.ingredients) {
+            ingredientsMapped = recipe.ingredients.map((ingredient, index) => {
+                return (
+                    <div key={`div${ingredient}:${index}`}>
+                        <ListItem key={`${index}:${ingredient}`} item={ingredient}/>
+                        {editToggle ? <button key={`X${index}`} name="ingredients" onClick={e => removeItem(e, index)}>X</button> : null} 
+                    </div>
+                )
+            })
+        }
 
-        const directionsMapped = this.props.recipe.directions.map((direction, index) => {
-            return <ListItem key={`${index}:${direction}`} item={direction}/>
-        })
+        let directionsMapped = []
+        if (recipe.directions) {
+            directionsMapped = recipe.directions.map((direction, index) => {
+                return (
+                    <div key={`div${direction}:${index}`}>
+                        <ListItem key={`${index}:${direction}`} item={direction}/>
+                        {editToggle ? <button key={`XTRA${index}`} name="directions" onClick={e => removeItem(e, index)}>X</button> : null} 
+                    </div>
+            )})
+        }
 
         return (
             <div>
@@ -43,16 +53,16 @@ class Recipe extends Component {
                 <ul>{ingredientsMapped}</ul>
                 {editToggle ? (
                     <div>
-                        <input name={"ingredientsInput"} onChange={e => changeHandler(e)} placeholder="Add Ingredients"></input>
-                        <button onClick={e => addItem(e)}>+</button>
+                        <input name="ingredientsInput" onChange={e => changeHandlerItems(e)} placeholder="Add Ingredients"></input>
+                        <button name="ingredients" id="ingredientsInput" onClick={e => addItem(e)}>+</button>
                     </div>
                 ) : null}
                 <h2>Directions</h2>
                 <ol>{directionsMapped}</ol>
                 {editToggle ? (
                     <div>
-                        <input name={"directionsInput"} onChange={e => changeHandler(e)} placeholder="Add Directions"></input>
-                        <button onClick={e => addItem(e)}>+</button>
+                        <input name="directionsInput" onChange={e => changeHandlerItems(e)} placeholder="Add Directions"></input>
+                        <button name="directions" id="directionsInput" onClick={e => addItem(e)}>+</button>
                     </div>
                 ) : null}
             </div>

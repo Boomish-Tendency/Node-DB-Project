@@ -11,27 +11,23 @@ class RecipePage extends Component {
             editToggle: false,
             ingredientsInput: "",
             directionsInput: "",
-
-            recipeName: "",
-            prepTime: "",
-            cookTime: "",
-            totalTime: "",
-            yeilds: "",
-            ingredients: [],
-            directions: []
+            recipeOG: {},
         }
     }
 
+    
     componentDidMount = () => {
         axios.get(`/api/recipes/${this.props.match.params.id}`)
-        .then(res => this.setState({recipe: res.data}))
+        .then(res => this.setState({recipe: res.data, recipeOG: res.data}))
         .catch(err => console.log(err))
     }
 
-    editRecipe = (recipeUpdate) => {
+    editRecipe = recipeUpdate => {
         axios.put(`api/recipes/${this.props.match.params.id}`, recipeUpdate)
-        .then(res => this.setState({recipes: res.data}))
+        .then(res => this.setState({recipe: res.data}))
         .catch(err => console.log(err))
+
+        this.editToggleFunc()
     }
 
     editToggleFunc = () => {
@@ -39,27 +35,38 @@ class RecipePage extends Component {
     }
 
     changeHandler = e => {
+        this.setState({recipe: {...this.state.recipe, [e.target.name]: e.target.value}})
+    }
+
+    changeHandlerItems = e => {
         this.setState({[e.target.name]: e.target.value})
     }
 
     removeItem = (e, index) => {
-
+        const {recipe} =  this.state
+        this.setState({recipe: {...recipe, [e.target.name]: recipe[e.target.name].filter((item, index2) => index2 !== index)}})
     }
 
     addItem = e => {
+        const {recipe} =  this.state
+        this.setState({recipe: {...recipe, [e.target.name]: [...recipe[e.target.name], this.state[e.target.id]]}})
+    }
 
+    cancelEdit = () => {
+        this.setState({recipe: this.state.recipeOG})
+        this.editToggleFunc()
     }
 
     render() {
-        const {recipe, editToggle, recipeName, prepTime, cookTime, totalTime, yeilds, ingredients, directions} = this.state
+        const {recipe, editToggle} = this.state
         return (
             <div>
                 <RecipeHeaderInfo info={recipe} editToggle={editToggle} changeHandler={this.changeHandler}/>
-                <Recipe key={recipe.id} recipe={recipe} editToggle={editToggle} changeHandler={this.changeHandler} removeItem={this.removeItem} addItem={this.addItem}/>
+                <Recipe recipe={recipe} editToggle={editToggle} changeHandler={this.changeHandler} removeItem={this.removeItem} addItem={this.addItem} changeHandlerItems={this.changeHandlerItems}/>
                 {!editToggle ? <button onClick={this.editToggleFunc}>Edit Recipe</button> : (
                     <div>
-                        <button onClick={this.editToggleFunc}>Cancel</button>
-                        <button onClick={this.editRecipe({ recipeName, prepTime, cookTime, totalTime, yeilds, ingredients, directions})}>Save</button>
+                        <button onClick={this.cancelEdit}>Cancel</button>
+                        <button onClick={() => this.editRecipe(recipe)}>Save</button>
                     </div>
                 )}
             </div>

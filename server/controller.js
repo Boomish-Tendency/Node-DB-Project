@@ -71,11 +71,11 @@ module.exports = {
     },
 
     editRecipe: (req, res) => {
-        const {index} = req.params
+        const {id} = req.params
         
-        recipes[index] = {...recipes[index], ...req.body}
+        recipes[id] = {...recipes[id], ...req.body}
 
-        res.status(200).send(recipes)
+        res.status(200).send(recipes[id])
     },
     deleteRecipe: (req, res) => {
         const {id} = req.params
